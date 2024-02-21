@@ -192,18 +192,18 @@
     }
 
 
-const nav = document.querySelector('nav');
+    const nav = document.querySelector('nav');
 let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
    const currentScrollTop = window.scrollY;
 
-   if (currentScrollTop > lastScrollTop) {
-      // Scrolling down
+   if (currentScrollTop > lastScrollTop && currentScrollTop > 0) {
+      // Scrolling down and not at the top of the page
       nav.classList.add('hidden');
       nav.classList.remove('visible');
    } else {
-      // Scrolling up
+      // Scrolling up or at the top of the page
       nav.classList.remove('hidden');
       nav.classList.add('visible');
    }
@@ -277,13 +277,21 @@ function scrollToSection(sectionId) {
     const clickedStar = event.target;
     const stars = document.querySelectorAll('.star');
 
-    stars.forEach((star, index) => {
-        star.classList.remove('clicked');
 
+
+    
+    stars.forEach((star, index) => {
         if (index < clickedStar.dataset.value) {
             star.classList.add('clicked');
+        } else {
+            star.classList.remove('clicked');
         }
-    });
+    })
+    
+    
+   
+    
+    ;
 
     const rating = clickedStar.getAttribute('data-value');
     document.getElementById('ratingMessage').innerText = `You rated ${rating} stars. Thank you!`;

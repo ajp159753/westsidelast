@@ -1,9 +1,11 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: beige;
 }
 
 header {
+
     top: 0;
     display: flex;
     justify-content: center;
